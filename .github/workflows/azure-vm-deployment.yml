@@ -1,0 +1,36 @@
+name: Deploy VM to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Azure CLI
+      uses: azure/setup-azure-cli@v1
+      with:
+        version: latest
+
+    - name: Login to Azure
+      run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+
+    - name: Create Resource Group
+      run: az group create --name myResourceGroup --location eastus
+
+    - name: Create VM
+      run: |
+        az vm create \
+          --resource-group myResourceGroup \
+          --name myVM \
+          --image UbuntuLTS \
+          --admin-username azureuser \
+          --admin-password Passw0rd1234 \
+          --location eastus \
+          --no-wait
