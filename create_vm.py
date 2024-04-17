@@ -10,11 +10,11 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
 
     # Define VM parameters for Windows VM
     vm_parameters = {
-        'location': westus,
+        'location': 'westus',
         'os_profile': {
             'computer_name': vm_py,
-            'admin_username': sriharshitha,
-            'admin_password': SriHarshitha@123
+            'admin_username': 'sriharshitha',
+            'admin_password': "SriHarshitha@123"
         },
         'hardware_profile': {
             'vm_size': 'Standard_B1s'
