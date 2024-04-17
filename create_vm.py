@@ -3,23 +3,36 @@ from azure.mgmt.compute import ComputeManagementClient
 from azure.mgmt.compute.models import HardwareProfile, NetworkProfile, OSProfile, StorageProfile, VirtualMachine, VirtualMachineProperties
 
 def create_vm(resource_group_name, vm_name, location, admin_username, admin_password):
-    subscription_id = 9718b645-776a-420e-b2a3-1e82dd1d1536
+    subscription_id = 'YOUR_SUBSCRIPTION_ID'
     credentials = AzureCliCredential()
 
-    compute_client = ComputeManagementClient(credentials, 9718b645-776a-420e-b2a3-1e82dd1d1536)
+    compute_client = ComputeManagementClient(credentials, subscription_id)
 
-    # Define VM parameters
+    # Define VM parameters for Windows VM
     vm_parameters = {
-        'location': westus,
+        'location': location,
         'os_profile': {
-            'computer_name': vm_py,
-            'admin_username': sriharshitha,
-            'admin_password': SriHarshitha@123
+            'computer_name': vm_name,
+            'admin_username': admin_username,
+            'admin_password': admin_password
         },
         'hardware_profile': {
             'vm_size': 'Standard_B1s'
         },
-        # Add other required parameters (storage profile, network profile, etc.)
+        'storage_profile': {
+            'os_disk': {
+                'create_option': 'FromImage',
+                'os_type': 'Windows',
+                'disk_size_gb': 128
+            },
+            'image_reference': {
+                'publisher': 'MicrosoftWindowsServer',
+                'offer': 'WindowsServer',
+                'sku': '2019-Datacenter',
+                'version': 'latest'
+            }
+        },
+        # Add other required parameters (network profile, etc.)
     }
 
     # Create VM
@@ -30,4 +43,4 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
     async_vm_creation.wait()
 
 # Usage example
-create_vm('harshi', 'vm_py', 'westus', 'sriharshitha', 'SriHarshitha@123')
+create_vm('myResourceGroup', 'myWindowsVM', 'eastus', 'azureuser', 'Passw0rd1234')
