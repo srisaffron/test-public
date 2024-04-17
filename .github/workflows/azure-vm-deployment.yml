@@ -1,10 +1,10 @@
 name: Create Azure VM
 
+permissions:
+    id-token: write
+    contents: read
 on:
-  push:
-    branches:
-      - main
-
+    workflow_dispatch:
 jobs:
   create-vm:
     runs-on: ubuntu-latest
