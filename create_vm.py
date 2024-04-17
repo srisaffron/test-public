@@ -1,6 +1,6 @@
 from azure.identity import AzureCliCredential
 from azure.mgmt.compute import ComputeManagementClient
-from azure.mgmt.compute.models import HardwareProfile, NetworkProfile, OSProfile, StorageProfile, VirtualMachine, VirtualMachineProperties
+from azure.mgmt.compute.models import HardwareProfile, NetworkProfile, OSProfile, StorageProfile, VirtualMachine
 
 def create_vm(resource_group_name, vm_name, location, admin_username, admin_password):
     subscription_id = '9718b645-776a-420e-b2a3-1e82dd1d1536'
