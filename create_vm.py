@@ -12,7 +12,7 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
     vm_parameters = {
         'location': 'westus',
         'os_profile': {
-            'computer_name': vm_name,  # Use vm_name instead of 'YOUR_COMPUTER_NAME'
+            'computer_name': vm_name,
             'admin_username': admin_username,
             'admin_password': admin_password
         },
@@ -36,7 +36,7 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
     }
 
     # Create VM
-    async_vm_creation = compute_client.virtual_machines.create_or_update(
+    async_vm_creation = compute_client.virtual_machines.begin_create_or_update(
         resource_group_name, vm_name, VirtualMachine(vm_parameters)
     )
 
