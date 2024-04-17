@@ -28,4 +28,4 @@ jobs:
           --image Win2019Datacenter \
           --admin-username azureuser \
           --admin-password Passw0rd1234 \
-          --size Standard_D2_v3
+          --size Standard_B1ls
