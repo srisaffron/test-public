@@ -3,10 +3,10 @@ from azure.mgmt.compute import ComputeManagementClient
 from azure.mgmt.compute.models import HardwareProfile, NetworkProfile, OSProfile, StorageProfile, VirtualMachine
 
 def create_vm(resource_group_name, vm_name, location, admin_username, admin_password):
-    subscription_id = '9718b645-776a-420e-b2a3-1e82dd1d1536'
+    azure_subscription_id = '9718b645-776a-420e-b2a3-1e82dd1d1536'
     credentials = AzureCliCredential()
 
-    compute_client = ComputeManagementClient(credentials, subscription_id)
+    compute_client = ComputeManagementClient(credentials, azure_subscription_id)
 
     # Define VM parameters for Windows VM
     vm_parameters = {
@@ -43,4 +43,4 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
     async_vm_creation.wait()
 
 # Usage example
-create_vm('borra', 'myWindowsVM', 'eastus', 'sriharshitha', 'SriHarshitha@123')
+create_vm('borra', 'vm_py', 'eastus', 'sriharshitha', 'SriHarshitha@123')
