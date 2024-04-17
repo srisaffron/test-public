@@ -23,7 +23,7 @@ jobs:
     - name: Create Azure VM
       run: |
         az vm create \
-          --resource-group borra \
+          --resource-group harshi \
           --name myVM \
           --image Win2019Datacenter \
           --admin-username azureuser \
