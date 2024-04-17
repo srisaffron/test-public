@@ -37,7 +37,7 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
 
     # Create VM
     async_vm_creation = compute_client.virtual_machines.begin_create_or_update(
-        resource_group_name, vm_name, VirtualMachine(vm_parameters)
+        resource_group_name, vm_name, vm_parameters
     )
 
     async_vm_creation.wait()
