@@ -25,7 +25,7 @@ jobs:
         az vm create \
           --resource-group borra \
           --name myVM \
-          --image UbuntuLTS \
+          --image Win2019Datacenter \
           --admin-username azureuser \
           --admin-password Passw0rd1234 \
           --size Standard_B1s
