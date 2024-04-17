@@ -29,4 +29,5 @@ jobs:
           --admin-username azureuser \
           --admin-password Passw0rd1234 \
           --size Standard_B1ls \
-          --zone 1
+          --zone 1 \
+          --location eastus
