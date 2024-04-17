@@ -30,4 +30,4 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
     async_vm_creation.wait()
 
 # Usage example
-create_vm('borra', 'vm_py', 'westus', 'sriharshitha', 'SriHarshitha@123')
+create_vm('harshi', 'vm_py', 'westus', 'sriharshitha', 'SriHarshitha@123')
