@@ -3,7 +3,6 @@ from azure.mgmt.compute import ComputeManagementClient
 from azure.mgmt.compute.models import HardwareProfile, NetworkProfile, OSProfile, StorageProfile, VirtualMachine
 
 def create_vm(resource_group_name, vm_name, location, admin_username, admin_password):
-    # Hardcoded subscription ID for demonstration purposes, consider retrieving it securely
     subscription_id = '9718b645-776a-420e-b2a3-1e82dd1d1536'
     credentials = AzureCliCredential()
 
@@ -11,9 +10,9 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
 
     # Define VM parameters for Windows VM
     vm_parameters = {
-        'location': location,
+        'location': 'westus',
         'os_profile': {
-            'computer_name': vm_name,  # Using vm_name instead of 'YOUR_COMPUTER_NAME'
+            'computer_name': vm_name,  # Use vm_name instead of 'YOUR_COMPUTER_NAME'
             'admin_username': admin_username,
             'admin_password': admin_password
         },
@@ -36,16 +35,12 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
         # Add other required parameters (network profile, etc.)
     }
 
-    # Create VM with error handling
-    try:
-        async_vm_creation = compute_client.virtual_machines.create_or_update(
-            resource_group_name, vm_name, VirtualMachine(vm_parameters)
-        )
-        async_vm_creation.wait()
-        print("Virtual machine creation successful.")
-    except Exception as e:
-        print(f"Error creating virtual machine: {str(e)}")
+    # Create VM
+    async_vm_creation = compute_client.virtual_machines.create_or_update(
+        resource_group_name, vm_name, VirtualMachine(vm_parameters)
+    )
+
+    async_vm_creation.wait()
 
 # Usage example
-create_vm('harshi', 'vm_py', 'westus', 'sriharshitha', 'SriHarshitha@123')
-
+create_vm('myResourceGroup', 'myWindowsVM', 'eastus', 'sriharshitha', 'SriHarshitha@123')
