@@ -43,4 +43,4 @@ def create_vm(resource_group_name, vm_name, location, admin_username, admin_pass
     async_vm_creation.wait()
 
 # Usage example
-create_vm('myResourceGroup', 'myWindowsVM', 'eastus', 'sriharshitha', 'SriHarshitha@123')
+create_vm('borra', 'myWindowsVM', 'eastus', 'sriharshitha', 'SriHarshitha@123')
